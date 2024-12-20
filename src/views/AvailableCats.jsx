@@ -39,10 +39,21 @@ export default function AvailableCats() {
       (!breedFilter || cat.breed === breedFilter) &&
       (!searchTerm || cat.name.toLowerCase().includes(searchTerm.toLowerCase()))
   );
+
   return (
     <section className="text-center mt-4">
       <h2>Available Cats</h2>
       <p>Meet our adorable cats looking for their forever home!</p>
+
+      <div className="mb-4 d-flex justify-content-center gap-3">
+        <input
+          type="text"
+          placeholder="Search by name"
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          className="form-control w-25"
+        />
+      </div>
 
       <div className="mt-2 row g-4 cats-container" id="cats-container">
         {cats.map((cat, i) => (
