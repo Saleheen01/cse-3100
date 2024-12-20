@@ -14,11 +14,11 @@ export default function AvailableCats() {
   const [breedFilter, setBreedFilter] = useState('');
   const [searchTerm, setSearchTerm] = useState('');
 
-  useEffect(() => {  
+  useEffect(() => {
     const fetchCatImages = async () => {
       try {
         const responses = await Promise.all(
-        availableCats.map(() => fetch('https://api.thecatapi.com/v1/images/search').then((res) => res.json()))
+          availableCats.map(() => fetch('https://api.thecatapi.com/v1/images/search').then((res) => res.json()))
         );
         const catsWithImages = availableCats.map((cat, index) => ({
           ...cat,
@@ -59,7 +59,7 @@ export default function AvailableCats() {
           value={breedFilter}
           onChange={(e) => setBreedFilter(e.target.value)}
         >
-           <option value="">All Breeds</option>
+          <option value="">All Breeds</option>
           <option value="Sphynx">Sphynx</option>
           <option value="Peterbald">Peterbald</option>
           <option value="Birman">Birman</option>
@@ -71,14 +71,14 @@ export default function AvailableCats() {
       </div>
 
       <div className="mt-2 row g-4 cats-container" id="cats-container">
-        {cats.map((cat, i) => (
+        {filteredCats.map((cat, i) => (
           <div key={i} className="col-md-4">
             <div className="cat-card">
               <img
-               src={cat.image}
-               alt={cat.name} 
-               className="img-fluid mb-2"
-               style={{ borderRadius: '8px', height: '150px', objectFit: 'cover' }} 
+                src={cat.image}
+                alt={cat.name}
+                className="img-fluid mb-2"
+                style={{ borderRadius: '15px', height: '150px', objectFit: 'cover' }}
               />
               <div className="cat-info">
                 <h3 className="h5 mb-1">{cat.name}</h3>
