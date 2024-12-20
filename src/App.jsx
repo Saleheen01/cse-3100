@@ -17,10 +17,11 @@ function App() {
       >
         <Route path={'/'} element={<Home />} />
         <Route path={'/available-cats'} element={<AvailableCats />} />
+        <Route path={'/contact-us'} element={<ContactUs />} />
+        <Route path={'/about-us'} element={<AboutUs />} />
       </Route>
     </Routes>
   );
 }
-
 
 export default App;

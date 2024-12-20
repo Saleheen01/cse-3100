@@ -6,7 +6,6 @@ const featuredCats = [
   { name: 'Shadow', age: '1', breed: 'Bengal' }
 ];
 
-
 export default function Home() {
   const [cats, setCats] = useState([]);
 
@@ -48,10 +47,10 @@ export default function Home() {
               <div className="cat-card">
                 <img src={cat.image} alt={cat.name} className="img-fluid mb-2" style={{ borderRadius: '8px', height: '200px', objectFit: 'cover' }} />
                 <div className="cat-info">
-                  <h3 className="h5 mb-1">{cat.name}</h3>
-                  <p className="mb-0">Age: {cat.age}</p>
-                  <p className="mb-0">Breed: {cat.breed}</p>
-                </div>
+                <h3 className="h5 mb-1">{cat.name}</h3>
+                <p className="mb-0">Age: {cat.age}</p>
+                <p className="mb-0">Breed: {cat.breed}</p>
+              </div>
               </div>
             </div>
           ))}
