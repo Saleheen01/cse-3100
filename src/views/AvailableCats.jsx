@@ -11,12 +11,15 @@ const availableCats = [
 
 export default function AvailableCats() {
   const [cats, setCats] = useState([]);
+  const [breedFilter, setBreedFilter] = useState('');
+  const [searchTerm, setSearchTerm] = useState('');
 
-  useEffect(() => {
-    // Fetch cat images from an API endpoint and assign it to the featuredCats list
+  useEffect(() => {  
     const fetchCatImages = async () => {
       try {
-        const responses = await Promise.all(availableCats.map(() => fetch('https://api.thecatapi.com/v1/images/search').then((res) => res.json())));
+        const responses = await Promise.all(
+        availableCats.map(() => fetch('https://api.thecatapi.com/v1/images/search').then((res) => res.json()))
+        );
         const catsWithImages = availableCats.map((cat, index) => ({
           ...cat,
           image: responses[index][0].url,
@@ -31,6 +34,11 @@ export default function AvailableCats() {
     fetchCatImages();
   }, []);
 
+  const filteredCats = cats.filter(
+    (cat) =>
+      (!breedFilter || cat.breed === breedFilter) &&
+      (!searchTerm || cat.name.toLowerCase().includes(searchTerm.toLowerCase()))
+  );
   return (
     <section className="text-center mt-4">
       <h2>Available Cats</h2>
