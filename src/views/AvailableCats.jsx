@@ -53,13 +53,33 @@ export default function AvailableCats() {
           onChange={(e) => setSearchTerm(e.target.value)}
           className="form-control w-25"
         />
+
+        <select
+          className="form-select w-25"
+          value={breedFilter}
+          onChange={(e) => setBreedFilter(e.target.value)}
+        >
+           <option value="">All Breeds</option>
+          <option value="Sphynx">Sphynx</option>
+          <option value="Peterbald">Peterbald</option>
+          <option value="Birman">Birman</option>
+          <option value="Abyssinian">Abyssinian</option>
+          <option value="Persian">Persian</option>
+          <option value="Bengal">Bengal</option>
+          <option value="Siamese">Siamese</option>
+        </select>
       </div>
 
       <div className="mt-2 row g-4 cats-container" id="cats-container">
         {cats.map((cat, i) => (
           <div key={i} className="col-md-4">
             <div className="cat-card">
-              <img src={cat.image} alt={cat.name} className="img-fluid mb-2" style={{ borderRadius: '8px', height: '150px', objectFit: 'cover' }} />
+              <img
+               src={cat.image}
+               alt={cat.name} 
+               className="img-fluid mb-2"
+               style={{ borderRadius: '8px', height: '150px', objectFit: 'cover' }} 
+              />
               <div className="cat-info">
                 <h3 className="h5 mb-1">{cat.name}</h3>
                 <p className="mb-0">Age: {cat.age}</p>
